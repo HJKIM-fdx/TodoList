@@ -19,9 +19,9 @@ const CalendarComponent = ({ setSelectedDate, todoList = [] }) => {
         
         const formattedDate = current.format('YYYY-MM-DD');
         
-        // dueDate를 변환 후 비교 (이전 문제 해결)
+        // createDateTime를 변환 후 비교 (이전 문제 해결)
         const dailyTodos = todoList.filter(todo =>
-            dayjs(todo.dueDate).isValid() && dayjs(todo.dueDate).format('YYYY-MM-DD') === formattedDate
+            dayjs(todo.createDateTime).isValid() && dayjs(todo.createDateTime).format('YYYY-MM-DD') === formattedDate
           );
           
         

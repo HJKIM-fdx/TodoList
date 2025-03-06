@@ -20,8 +20,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@CrossOrigin("*")   // 다른 서버에서 자원을 요청하는 허용범위를 지정하는 어노테이션
-@Tag(name = "TodoList 조회", description = "TodoList 조회하는 API입니다.")
+@CrossOrigin("*")  
+@Tag(name = "Todo 관리", description = "Todo 목록을 조회, 추가, 수정, 삭제하는 API입니다.")
 @RequestMapping("/api/todo")
 public class TodoController {
 
@@ -32,70 +32,56 @@ public class TodoController {
     }
 
     @GetMapping("")
-    @Operation(summary = "Todo 목록 조회", description = "등록된 Todo 목록을 조회하는 API입니다.")
+    @Operation(summary = "Todo 목록 조회", description = "등록된 모든 Todo 목록을 조회합니다.")
     public Map<String, Object> getTodoList() {
         try {
             var result = todoService.getTodoList();
             return ApiResponseUtils.createResponse(result);
-
         } catch (Exception e) {
             return ApiResponseUtils.createErrorResponse("오류 : " + e.getMessage());
         }
     }
 
     @PostMapping("")
-    @Operation(summary = "Todo 목록 조회", description = "등록된 Todo 목록을 조회하는 API입니다.")
+    @Operation(summary = "Todo 추가", description = "새로운 Todo 항목을 추가합니다.")
     public Map<String, Object> addTodoList(@RequestBody TodoVO param) {
-
         try {
             var result = todoService.addTodoList(param);
             return ApiResponseUtils.createResponse(result);
-
         } catch (Exception e) {
             return ApiResponseUtils.createErrorResponse("오류 : " + e.getMessage());
         }
     }
 
     @DeleteMapping("/delete/{todoId}")
-    @Operation(summary = "Todo 목록 조회", description = "등록된 Todo 목록을 조회하는 API입니다.")
+    @Operation(summary = "Todo 삭제", description = "특정 Todo 항목을 삭제합니다. <br> `-1`을 입력하면 전체 삭제됩니다.")
     public Map<String, Object> deleteTodoList(@PathVariable int todoId) {
-
         try {
             var result = 0;
-            // 전체 삭제 (todoId = -1 )로 요청 받을 때
             if (todoId == -1) {
                 result = todoService.deleteAllTodoList(todoId);
-            }
-            // 삭제
-            else {
+            } else {
                 result = todoService.deleteTodoList(todoId);
             }
             return ApiResponseUtils.createResponse(result);
-
         } catch (Exception e) {
             return ApiResponseUtils.createErrorResponse("오류 : " + e.getMessage());
         }
     }
-
-
 
     @PutMapping("")
-    @Operation(summary = "Todo 목록 조회", description = "등록된 Todo 목록을 조회하는 API입니다.")
+    @Operation(summary = "Todo 수정", description = "특정 Todo 항목을 수정합니다. <br> `-1`을 입력하면 모든 Todo 항목을 완료 처리합니다.")
     public Map<String, Object> updateTodoList(@RequestBody TodoVO param) {
-
         try {
             var result = 0;
-            // 전체 완료 (todoId = -1)로 요청 받을 때
             if (param.getTodoId() == -1) {
-                result = todoService.completeAll();    
+                result = todoService.completeAll();
+            } else {
+                result = todoService.updateTodoList(param);
             }
-            result = todoService.updateTodoList(param);
             return ApiResponseUtils.createResponse(result);
-
         } catch (Exception e) {
             return ApiResponseUtils.createErrorResponse("오류 : " + e.getMessage());
         }
     }
-
-
 }

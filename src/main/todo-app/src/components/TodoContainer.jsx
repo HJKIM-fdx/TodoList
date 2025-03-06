@@ -10,8 +10,8 @@ const TodoContainer = ( { selectedDate, todoList, setTodoList} ) => {
   // const [todoList, setTodoList] = useState([]);
   const [input, setInput] = useState('');
   const [todoType, settodoType] = useState('');
-  const [dueDate, setDueDate] = useState(selectedDate);
-  const [createDateTime, setCreateDateTime] = useState();
+  const [createDateTime, setCreateDateTime] = useState(selectedDate);
+  const [dueDate, setDueDate] = useState();
   
   
   // 이벤트 함수
@@ -25,13 +25,13 @@ const TodoContainer = ( { selectedDate, todoList, setTodoList} ) => {
       settodoType(e.target.value);
     }
     // 날짜 입력 변경 이벤트 함수
-    const onDueDateChange = (date, dateString) => {
+    const onCreateDateTimeChange = (date, dateString) => {
       // date는 moment 객체, dateString은 'YYYY-MM-DD' 형식의 문자열
-      setDueDate(dateString);  // dateString을 사용하여 문자열 형식으로 상태를 업데이트
+      setCreateDateTime(dateString);  // dateString을 사용하여 문자열 형식으로 상태를 업데이트
     };
 
-    const onCreateDateTiemChange = (date, dateString) => {
-      setCreateDateTime(dateString);
+    const onDueDateChange = (date, dateString) => {
+      setDueDate(dateString);
     };
     
     
@@ -40,9 +40,9 @@ const TodoContainer = ( { selectedDate, todoList, setTodoList} ) => {
     getList()
   }, []);
 
-    // selectedDate 변경될 때마다 dueDate 업데이트
+    // selectedDate 변경될 때마다 createDateTime 업데이트
     useEffect(() => {
-      setDueDate(selectedDate);
+      setCreateDateTime(selectedDate);
     }, [selectedDate]);
 
     // 할일 목록 요청
@@ -237,13 +237,14 @@ const TodoContainer = ( { selectedDate, todoList, setTodoList} ) => {
     setInput('')
     settodoType('')
     setDueDate(null)
+    setCreateDateTime(null)
   }
 
   return (
     <div className="container">
       <TodoHeader />
       <TodoInput input={input} onInputChange={onInputChange} onTodoTypeChange={onTodoTypeChange} onSubmit={onSubmit} todoType={todoType}
-      onDueDateChange={onDueDateChange} dueDate={dueDate} onCreateDateTiemChange={onCreateDateTiemChange} createDateTime={createDateTime}/>
+      onDueDateChange={onDueDateChange} createDateTime={createDateTime} onCreateDateTimeChange={onCreateDateTimeChange} dueDate={dueDate}/>
       <TodoList todoList={todoList} onToggle={onToggle} onRemove={onRemove} onUpdate={onUpdate}/>
       <TodoFooter onRemoveAll={onRemoveAll} onCompleteAll={onCompleteAll}/>
     </div>

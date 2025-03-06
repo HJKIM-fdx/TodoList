@@ -6,9 +6,11 @@
   }
   
   .title {
-    width: 50%;
-    text-align: center;
-    margin-bottom: 1px;
+    display: flex; /* 자식 요소들을 가로로 나열 */
+    justify-content: center; /* 자식 요소들을 가운데 정렬 */
+    align-items: center; /* 세로로도 가운데 정렬 */
+    gap: 400px; /* 두 요소 사이에 20px 여백 추가 */
+    margin-bottom: 20px; /* 아래쪽에 여백 추가 */
   }
 
   .todo-header {
@@ -22,18 +24,18 @@
     background-color: #c8d3f5;
 }
 .todo-header .h1 {
-    margin-left: 20px; /* h1 항목 오른쪽 여백 */
+    margin-left: 30px; /* h1 항목 오른쪽 여백 */
 }
 
 .todo-header .h2 {
-    margin-left: 20px;
+    margin-left: 8px;
 }
 .todo-header .h3 {
-    margin-left: 20px;
+    margin-left: 5px;
 }
 
 .todo-header .h4 {
-    margin-right: 160px;
+    margin-right: 155px;
 }
 
   .title h1 {
@@ -68,7 +70,7 @@
     border: 2px solid rgb(0, 0, 0);
     margin: 100px auto;
     width: 480px;
-    min-width: 600px;
+    min-width: 700px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
@@ -202,23 +204,19 @@ ul {
   text-align: left; /* 텍스트 정렬 */
 }
 
+.todoItem.overdue {
+    background-color: #ffcccc; /* 연한 빨강 배경 */
+  }
+  
+  .todoItem.checked {
+    background-color: white; /* 완료된 경우 원래 배경으로 */
+  }
+  
+  
+
 .btnUpDel {
     margin-left: 37%;
 }
-
-/* 체크박스 숨기기 */
-/* .todoItem input[type='checkbox'] {
-    display: none;
-} */
-
-/* .todoItem label {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px dashed rgb(0, 0, 0);
-    border-radius: 50%;
-    cursor: pointer;
-} */
 
 /* 체크된 항목 스타일 */
 .todoItem input:checked~label {
@@ -237,7 +235,7 @@ ul {
 .todoItem .edit-input {
     flex-grow: 1;
     max-width: 60%; /* 버튼이 밀리지 않도록 최대 너비 제한 */
-    min-width: 100px;
+    min-width: 135px;
     padding: 5px;
     font-size: 14px;
     border: none;

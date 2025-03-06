@@ -1,26 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Checkbox, Button } from 'antd';
 import { FormOutlined, DeleteOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
   let { todoId, todoTitle, status, todoType, dueDate, createDateTime } = todo;
-  let itemClass = `todoItem ${status ? 'checked' : ''}`;
 
-  // console.log("넘어온 todo 데이터:", todo); // ✅ todo 객체 확인
-  // console.log("createDateTime: ", createDateTime); // ✅ undefined인지 확인
-
-  // ✅ 날짜를 "M월 D일" 형식으로 변환하는 함수
+  // ✅ 날짜를 "M/D" 형식으로 변환하는 함수
   const formatDate = (dateString) => {
-    if (!dateString) return ""; 
-    return dayjs(dateString).format("M/D"); 
+    if (!dateString) return "";
+    return dayjs(dateString).format("M/D");
   };
+
+  // ✅ 현재 날짜보다 마감일이 과거인지 확인 (할 일이 완료되지 않은 경우만)
+  const isOverdue = !status && dueDate && dayjs(dueDate).isBefore(dayjs(), 'day');
+
+  // ✅ itemClass에 overdue 추가 (status가 0일 때만)
+  let itemClass = `todoItem ${status ? 'checked' : ''} ${isOverdue ? 'overdue' : ''}`;
 
   // ✅ 상태 추가
   const [newTitle, setNewTitle] = useState(todoTitle);
   const [newTodoType, setNewTodoType] = useState(todoType);
   const [newDueDate, setNewDueDate] = useState(dueDate ? dayjs(dueDate).format("YYYY-MM-DD") : "");
-  const [newCreateDateTime, setnewCreateDateTime] = useState(createDateTime? dayjs(createDateTime).format("YYYY-MM-DD") : "");
+  const [newCreateDateTime, setNewCreateDateTime] = useState(createDateTime ? dayjs(createDateTime).format("YYYY-MM-DD") : "");
+
+  // ✅ Notification 권한 요청 (앱 실행 시 한 번만 실행)
+  useEffect(() => {
+    if (Notification.permission !== "granted") {
+      Notification.requestPermission();
+    }
+  }, []);
+
+  // ✅ 마감일이 지났지만 status가 0일 경우에만 알람 띄우기
+  useEffect(() => {
+    if (isOverdue && Notification.permission === "granted") {
+      new Notification("📌 Todo 마감일 경과!", {
+        body: `할 일 "${todoTitle}"의 마감일이 지났습니다!`,
+        icon: "/alarm-icon.png", // 아이콘 설정 가능 (옵션)
+      });
+    }
+  }, [isOverdue, todoTitle]);
 
   // ✅ 수정 버튼 클릭 시 최신 상태 반영하여 onUpdate 호출
   const handleUpdate = () => {
@@ -28,7 +47,7 @@ const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
       ...todo,
       todoTitle: newTitle,
       todoType: newTodoType,
-      dueDate: newDueDate, 
+      dueDate: newDueDate,
       createDateTime: newCreateDateTime
     };
     onUpdate(updatedTodo);
@@ -59,10 +78,10 @@ const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
         {/* ✅ 시작일 입력 필드 */}
         <input 
           type="text" 
-          value={formatDate(newDueDate)} // "M월 D일" 형식 표시
-          onFocus={(e) => (e.target.type = "date")} // 클릭 시 date picker 표시
-          onBlur={(e) => (e.target.type = "text")} // 포커스 해제 시 다시 "M월 D일" 형식
-          onChange={(e) => setNewDueDate(e.target.value)}
+          value={formatDate(newCreateDateTime)}
+          onFocus={(e) => (e.target.type = "date")}
+          onBlur={(e) => (e.target.type = "text")}
+          onChange={(e) => setNewCreateDateTime(e.target.value)}
           className="edit-input"
           disabled
         />
@@ -70,10 +89,10 @@ const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
         {/* ✅ 마감일 입력 필드 */}
         <input 
           type="text" 
-          value={formatDate(newCreateDateTime)} // "M월 D일" 형식 표시
-          onFocus={(e) => (e.target.type = "date")} // 클릭 시 date picker 표시
-          onBlur={(e) => (e.target.type = "text")} // 포커스 해제 시 다시 "M월 D일" 형식
-          onChange={(e) => setnewCreateDateTime(e.target.value)}
+          value={formatDate(newDueDate)}
+          onFocus={(e) => (e.target.type = "date")}
+          onBlur={(e) => (e.target.type = "text")}
+          onChange={(e) => setNewDueDate(e.target.value)}
           className="edit-input"
           disabled
         />

@@ -48,3 +48,6 @@ Content-Type: application/json
 {
     "todoId": -1
 }
+
+### 날씨 테스트
+GET http://localhost:8081/api/weather?city=Seoul

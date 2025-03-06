@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState } from 'react';
 import TodoContainer from './components/TodoContainer';
 import CalendarComponent from './components/CalendarComponent';
+import Weather from './components/Weather';
 
 const App = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -10,7 +11,8 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="title">
-        <h1>Clush 캘린더</h1>
+        <h1>일정 관리 캘린더</h1>
+          <Weather/>
       </div>
       <div className="content-container">
         {/* 캘린더에서 선택한 날짜를 setSelectedDate로 업데이트 */}
