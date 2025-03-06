@@ -1,0 +1,50 @@
+### 할일목록조회
+GET http://localhost:8081/api/todo HTTP/1.1
+
+### 할일목록추가
+POST http://localhost:8081/api/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "todoTitle": "추가된 타이틀",
+    "todoType": "공부",
+    "text": "추가된 상세 내용",
+    "status": false,
+    "dueDate": "2025-03-15T23:59:59"
+}
+
+### 할일목록삭제
+DELETE http://localhost:8081/api/todo/delete/1 HTTP/1.1
+
+### 할일목록 전체삭제
+DELETE http://localhost:8081/api/todo/delete/-1 HTTP/1.1
+
+### 할일목록수정
+PUT http://localhost:8081/api/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "todoId": 86,
+    "todoTitle": "수정된 타이틀",
+    "todoType": "공부",
+    "text": "수정된 상세 내용",
+    "status": "true",
+    "dueDate": "2025-03-15T23:59:59"
+}
+
+### 할일목록수정
+PUT http://localhost:8081/api/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "todoId": 2,
+    "status": "true"
+}
+
+### 할일목록 전체완료
+PUT http://localhost:8081/api/todo HTTP/1.1
+Content-Type: application/json
+
+{
+    "todoId": -1
+}

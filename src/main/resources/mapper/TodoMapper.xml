@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clush.hjkim.app.mapper.TodoMapper">
+
+    <!-- 할 일 목록 조회 -->
+    <select id="getTodoList" resultType="com.clush.hjkim.app.vo.TodoVO">
+        SELECT
+             todoId         -- 할 일 ID
+            ,todoTitle      -- 할 일 제목
+            ,todoType       -- 할 일 유형
+            ,text           -- 상세 내용
+            ,status         -- 진행 상태
+            ,createDateTime -- 생성 날짜
+            ,dueDate        -- 마감 기한
+        FROM todos
+        ORDER BY status asc
+    </select>
+
+    <!-- 할 일 추가 -->
+    <insert id="addTodoList" parameterType="com.clush.hjkim.app.vo.TodoVO">
+        INSERT INTO todos (
+             todoTitle
+            ,todoType
+            ,text
+            ,status
+            ,createDateTime
+            ,dueDate
+        ) VALUES (
+             #{todoTitle}
+            ,#{todoType}
+            ,#{text}
+            ,#{status}
+            ,#{createDateTime} 
+            ,#{dueDate}
+        )
+    </insert>
+
+    <!-- 할 일 삭제 -->
+    <delete id="deleteTodoList" parameterType = "int">
+        DELETE FROM todos
+        WHERE todoId = #{todoId}
+    </delete>
+
+    <!-- 할 일 전체삭제 -->
+    <delete id="deleteAllTodoList">
+        DELETE FROM todos
+    </delete>
+
+    <!-- 할 일 수정 -->
+    <update id="updateTodoList" parameterType="com.clush.hjkim.app.vo.TodoVO">
+        UPDATE todos
+        SET
+            todoTitle = #{todoTitle},
+            todoType = #{todoType},
+            text = #{text},
+            status = #{status},
+            dueDate = #{dueDate}
+        WHERE todoId = #{todoId}
+    </update>
+
+    <!-- 할 일 전체완료-->
+    <update id="completeAll">
+        UPDATE todos
+        SET
+            status = true
+    </update>
+
+
+
+
+
+</mapper>
