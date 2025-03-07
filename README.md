@@ -21,19 +21,36 @@
 [프론트앤드]
 1. 마감일 지난 경우, 브라우저 알림 기능
    
+   ![image](https://github.com/user-attachments/assets/b767437a-f021-4090-98e0-f933521a8684)
+
     1-1. 마감일 지난 경우, 해당 할 일 캘린더와 To-do List에 빨갛게 색상 처리
+
+   ![image](https://github.com/user-attachments/assets/a4e800dc-584c-497a-98bd-736b508531eb)
+
+   ![image](https://github.com/user-attachments/assets/dc085d7b-9542-4802-9939-22a6b7c03ce4)
+
+
 
 3. 완료 버튼 클릭 시, 해당 할 일 캘린더와 To-do List에 취소선으로 표시
 
-4. 날씨 조회 API로 가져온 데이터로 현재 날씨 조회 기능
+   ![image](https://github.com/user-attachments/assets/72b00812-25d3-4719-9bfe-24d2b21b0dc0)
 
-5. 글자 수 제한 기능
+   ![image](https://github.com/user-attachments/assets/fb324f97-8788-44ea-878f-30a4410508b2)
 
-6. 빈 값 입력 방지 기능
 
-7. 시작일과 마감일 오입력 방지 기능 (마감일이 시작일보다 과거 날짜인 경우 추가 불가)
 
-8. 캘린더에서 날짜 클릭 시, To-do List에 시작일에 날짜 자동 입력
+5. 날씨 조회 API로 가져온 데이터로 현재 날씨 조회 기능
+
+   ![image](https://github.com/user-attachments/assets/6794c5a6-4cca-4264-bf6d-aa0e1dcf41ab)
+
+
+7. 글자 수 제한 기능
+
+8. 빈 값 입력 방지 기능
+
+9. 시작일과 마감일 오입력 방지 기능 (마감일이 시작일보다 과거 날짜인 경우 추가 불가)
+
+10. 캘린더에서 날짜 클릭 시, To-do List에 시작일에 날짜 자동 입력
 
 
 
