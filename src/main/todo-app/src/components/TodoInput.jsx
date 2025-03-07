@@ -26,10 +26,10 @@ const TodoInput = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    let newErrors = { input: false, todoType: false, createDateTime: false };
+  
+    let newErrors = { input: false, todoType: false, createDateTime: false, dueDate: false };
     let isValid = true;
-
+  
     if (!input.trim()) {
       newErrors.input = true;
       isValid = false;
@@ -38,16 +38,30 @@ const TodoInput = ({
       newErrors.todoType = true;
       isValid = false;
     }
-
+    if (!createDateTime) {
+      newErrors.createDateTime = true;
+      isValid = false;
+    }
+    if (!dueDate) {
+      newErrors.dueDate = true;
+      isValid = false;
+    }
+    if (dueDate && createDateTime && dayjs(dueDate).isBefore(dayjs(createDateTime), 'day')) {
+      newErrors.dueDate = true;
+      isValid = false;
+      message.error("마감일은 시작일보다 이전일 수 없습니다!");
+    }
+  
     if (!isValid) {
       setErrors(newErrors);
-      message.error("모든 필드를 입력해주세요!");
+      message.error("모든 필드를 올바르게 입력해주세요!");
       return;
     }
-
-    setErrors({ input: false, todoType: false, createDateTime: false });
+  
+    setErrors({ input: false, todoType: false, createDateTime: false, dueDate: false });
     onSubmit(e);
   };
+  
 
   return (
     <div>
@@ -92,12 +106,13 @@ const TodoInput = ({
             name="dueDate"
             value={dueDate ? dayjs(dueDate) : null}
             onChange={onDueDateChange}
-            style={{ width: "100%" }}
+            style={{ width: "100%", borderColor: errors.dueDate ? "red" : undefined }}
             placeholder="마감일"
           />
         </Col>
       </Row>
     </div>
+    
   );
 };
 
