@@ -12,9 +12,13 @@ const TodoInput = ({
   dueDate,
   onDueDateChange,
   createDateTime,
-  onCreateDateTimeChange
+  onCreateDateTimeChange,
 }) => {
-  const [errors, setErrors] = useState({ input: false, todoType: false, createDateTime: false });
+  const [errors, setErrors] = useState({
+    input: false,
+    todoType: false,
+    createDateTime: false,
+  });
 
   const handleChange = (e, maxLength, callback) => {
     if (e.target.value.length > maxLength) {
@@ -26,10 +30,15 @@ const TodoInput = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    let newErrors = { input: false, todoType: false, createDateTime: false, dueDate: false };
+
+    let newErrors = {
+      input: false,
+      todoType: false,
+      createDateTime: false,
+      dueDate: false,
+    };
     let isValid = true;
-  
+
     if (!input.trim()) {
       newErrors.input = true;
       isValid = false;
@@ -46,22 +55,31 @@ const TodoInput = ({
       newErrors.dueDate = true;
       isValid = false;
     }
-    if (dueDate && createDateTime && dayjs(dueDate).isBefore(dayjs(createDateTime), 'day')) {
+    if (
+      dueDate &&
+      createDateTime &&
+      dayjs(dueDate).isBefore(dayjs(createDateTime), "day")
+    ) {
       newErrors.dueDate = true;
       isValid = false;
       message.error("마감일은 시작일보다 이전일 수 없습니다!");
+      // TODO : message 기능이 작동하지 않음
     }
-  
+
     if (!isValid) {
       setErrors(newErrors);
       message.error("모든 필드를 올바르게 입력해주세요!");
       return;
     }
-  
-    setErrors({ input: false, todoType: false, createDateTime: false, dueDate: false });
+
+    setErrors({
+      input: false,
+      todoType: false,
+      createDateTime: false,
+      dueDate: false,
+    });
     onSubmit(e);
   };
-  
 
   return (
     <div>
@@ -73,9 +91,17 @@ const TodoInput = ({
           value={input}
           onChange={(e) => handleChange(e, 20, onInputChange)}
           maxLength={50}
-          style={{ marginBottom: "10px", borderColor: errors.input ? "red" : undefined }}
+          style={{
+            marginBottom: "10px",
+            borderColor: errors.input ? "red" : undefined,
+          }}
         />
-        <Button type="primary" htmlType="submit" icon={<PlusOutlined />} className="btn">
+        <Button
+          type="primary"
+          htmlType="submit"
+          icon={<PlusOutlined />}
+          className="btn"
+        >
           추가
         </Button>
       </form>
@@ -89,7 +115,10 @@ const TodoInput = ({
             value={todoType}
             onChange={(e) => handleChange(e, 10, onTodoTypeChange)}
             maxLength={20}
-            style={{ marginBottom: "10px", borderColor: errors.todoType ? "red" : undefined }}
+            style={{
+              marginBottom: "10px",
+              borderColor: errors.todoType ? "red" : undefined,
+            }}
           />
         </Col>
         <Col span={8}>
@@ -97,7 +126,10 @@ const TodoInput = ({
             name="createDateTime"
             value={createDateTime ? dayjs(createDateTime) : null}
             onChange={onCreateDateTimeChange}
-            style={{ width: "100%", borderColor: errors.createDateTime ? "red" : undefined }}
+            style={{
+              width: "100%",
+              borderColor: errors.createDateTime ? "red" : undefined,
+            }}
             placeholder="시작일"
           />
         </Col>
@@ -106,13 +138,15 @@ const TodoInput = ({
             name="dueDate"
             value={dueDate ? dayjs(dueDate) : null}
             onChange={onDueDateChange}
-            style={{ width: "100%", borderColor: errors.dueDate ? "red" : undefined }}
+            style={{
+              width: "100%",
+              borderColor: errors.dueDate ? "red" : undefined,
+            }}
             placeholder="마감일"
           />
         </Col>
       </Row>
     </div>
-    
   );
 };
 

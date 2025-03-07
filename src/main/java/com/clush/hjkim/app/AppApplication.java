@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.clush.hjkim"})
-@MapperScan("com.clush.hjkim.app.Mapper") 
+@MapperScan("com.clush.hjkim.app.mapper") 
 public class AppApplication {
 
 	public static void main(String[] args) {

@@ -1,35 +1,45 @@
 .app-container {
     display: flex;
-    flex-direction: column;  /* 제목을 위로 두고, 그 아래에 내용 배치 */
+    flex-direction: column;
+    /* 제목을 위로 두고, 그 아래에 내용 배치 */
     align-items: center;
     padding-top: 0px;
-  }
-  
-  .title {
-    display: flex; /* 자식 요소들을 가로로 나열 */
-    justify-content: center; /* 자식 요소들을 가운데 정렬 */
-    align-items: center; /* 세로로도 가운데 정렬 */
-    gap: 400px; /* 두 요소 사이에 20px 여백 추가 */
-    margin-bottom: 20px; /* 아래쪽에 여백 추가 */
-  }
+}
 
-  .todo-header {
+.title {
+    display: flex;
+    /* 자식 요소들을 가로로 나열 */
+    justify-content: center;
+    /* 자식 요소들을 가운데 정렬 */
+    align-items: center;
+    /* 세로로도 가운데 정렬 */
+    gap: 400px;
+    /* 두 요소 사이에 20px 여백 추가 */
+    margin-bottom: 20px;
+    /* 아래쪽에 여백 추가 */
+}
+
+.todo-header {
     display: flex;
     padding: 5px;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 0px;
     color: rgb(0, 0, 0);
     font-size: 15px;
-    justify-content: space-between; /* 항목들이 균등하게 배치되도록 */
+    justify-content: space-between;
+    /* 항목들이 균등하게 배치되도록 */
     background-color: #c8d3f5;
 }
+
 .todo-header .h1 {
-    margin-left: 30px; /* h1 항목 오른쪽 여백 */
+    margin-left: 30px;
+    /* h1 항목 오른쪽 여백 */
 }
 
 .todo-header .h2 {
     margin-left: 8px;
 }
+
 .todo-header .h3 {
     margin-left: 5px;
 }
@@ -38,33 +48,36 @@
     margin-right: 155px;
 }
 
-  .title h1 {
+.title h1 {
     font-size: 36px;
     font-weight: bold;
-  }
-  
-  .content-container {
+}
+
+.content-container {
     display: flex;
-    flex-direction: row;  /* 캘린더와 Todo 리스트를 가로로 배치 */
+    flex-direction: row;
+    /* 캘린더와 Todo 리스트를 가로로 배치 */
     justify-content: center;
     width: 80%;
     padding: 0 20px;
-  }
-  
-  
-  .calendar-container {
+}
+
+
+.calendar-container {
     flex: 1;
     max-width: 900px;
-    margin-right: 20px; /* 캘린더와 Todo 리스트 사이의 간격 */
-    height: 250px; /* 캘린더 높이를 줄임 */
-  }
-  
-  .todo-container {
+    margin-right: 20px;
+    /* 캘린더와 Todo 리스트 사이의 간격 */
+    height: 250px;
+    /* 캘린더 높이를 줄임 */
+}
+
+.todo-container {
     flex: 3;
     max-width: 600px;
     margin-top: -100px;
-  }
-  
+}
+
 
 .container {
     border: 2px solid rgb(0, 0, 0);
@@ -105,11 +118,11 @@
     color: rgb(0, 0, 0);
 }
 
-  /* 크롬, 사파리에서 기본 달력 아이콘 제거 */
-  input[type="date"]::-webkit-calendar-picker-indicator {
+/* 크롬, 사파리에서 기본 달력 아이콘 제거 */
+input[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
-  }
-  
+}
+
 
 .form .input {
     border: none;
@@ -135,9 +148,7 @@
     width: 15%;
 }
 
-.btn {
-
-}
+.btn {}
 
 
 /* 버튼에 마우스 올렸을 때 효과 */
@@ -191,28 +202,35 @@ ul {
     align-items: center;
     flex-grow: 1;
     gap: 10px;
-    min-width: 0; /* 내부 요소가 넘칠 경우 대비 */
+    min-width: 0;
+    /* 내부 요소가 넘칠 경우 대비 */
 }
 
 .todoItem .todo-type {
-  font-size: 14px;
-  color: #888;
-  margin-top: 8px;
-  display: inline-block; /* 한 줄로 표시 */
-  writing-mode: unset; /* 강제 가로로 설정 */
-  white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 */
-  text-align: left; /* 텍스트 정렬 */
+    font-size: 14px;
+    color: #888;
+    margin-top: 8px;
+    display: inline-block;
+    /* 한 줄로 표시 */
+    writing-mode: unset;
+    /* 강제 가로로 설정 */
+    white-space: nowrap;
+    /* 텍스트가 한 줄로 표시되도록 */
+    text-align: left;
+    /* 텍스트 정렬 */
 }
 
 .todoItem.overdue {
-    background-color: #ffcccc; /* 연한 빨강 배경 */
-  }
-  
-  .todoItem.checked {
-    background-color: white; /* 완료된 경우 원래 배경으로 */
-  }
-  
-  
+    background-color: #ffcccc;
+    /* 연한 빨강 배경 */
+}
+
+.todoItem.checked {
+    background-color: white;
+    /* 완료된 경우 원래 배경으로 */
+}
+
+
 
 .btnUpDel {
     margin-left: 37%;
@@ -234,7 +252,8 @@ ul {
 /* 제목 입력 필드 */
 .todoItem .edit-input {
     flex-grow: 1;
-    max-width: 60%; /* 버튼이 밀리지 않도록 최대 너비 제한 */
+    max-width: 60%;
+    /* 버튼이 밀리지 않도록 최대 너비 제한 */
     min-width: 135px;
     padding: 5px;
     font-size: 14px;
@@ -260,7 +279,7 @@ ul {
     flex-shrink: 0;
     /* 버튼 크기 유지 */
 }
-   
+
 
 .footer {
     display: flex;

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Checkbox, Button } from 'antd';
-import { FormOutlined, DeleteOutlined } from '@ant-design/icons';
-import dayjs from 'dayjs';
+import React, { useState, useEffect } from "react";
+import { Checkbox, Button } from "antd";
+import { FormOutlined, DeleteOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
 
 const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
   let { todoId, todoTitle, status, todoType, dueDate, createDateTime } = todo;
@@ -13,16 +13,23 @@ const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
   };
 
   // ✅ 현재 날짜보다 마감일이 과거인지 확인 (할 일이 완료되지 않은 경우만)
-  const isOverdue = !status && dueDate && dayjs(dueDate).isBefore(dayjs(), 'day');
+  const isOverdue =
+    !status && dueDate && dayjs(dueDate).isBefore(dayjs(), "day");
 
   // ✅ itemClass에 overdue 추가 (status가 0일 때만)
-  let itemClass = `todoItem ${status ? 'checked' : ''} ${isOverdue ? 'overdue' : ''}`;
+  let itemClass = `todoItem ${status ? "checked" : ""} ${
+    isOverdue ? "overdue" : ""
+  }`;
 
   // ✅ 상태 추가
   const [newTitle, setNewTitle] = useState(todoTitle);
   const [newTodoType, setNewTodoType] = useState(todoType);
-  const [newDueDate, setNewDueDate] = useState(dueDate ? dayjs(dueDate).format("YYYY-MM-DD") : "");
-  const [newCreateDateTime, setNewCreateDateTime] = useState(createDateTime ? dayjs(createDateTime).format("YYYY-MM-DD") : "");
+  const [newDueDate, setNewDueDate] = useState(
+    dueDate ? dayjs(dueDate).format("YYYY-MM-DD") : ""
+  );
+  const [newCreateDateTime, setNewCreateDateTime] = useState(
+    createDateTime ? dayjs(createDateTime).format("YYYY-MM-DD") : ""
+  );
 
   // ✅ Notification 권한 요청 (앱 실행 시 한 번만 실행)
   useEffect(() => {
@@ -48,36 +55,36 @@ const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
       todoTitle: newTitle,
       todoType: newTodoType,
       dueDate: newDueDate,
-      createDateTime: newCreateDateTime
+      createDateTime: newCreateDateTime,
     };
     onUpdate(updatedTodo);
   };
 
   return (
     <li className={itemClass}>
-      <div className='item'>
+      <div className="item">
         {/* 체크박스 */}
         <Checkbox checked={status} onChange={() => onToggle(todo)} />
 
         {/* 제목 입력 필드 */}
-        <input 
-          type="text" 
-          value={newTitle} 
-          onChange={(e) => setNewTitle(e.target.value)} 
+        <input
+          type="text"
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
           className="edit-input"
         />
 
         {/* 타입 입력 필드 */}
-        <input 
-          type="text" 
-          value={newTodoType} 
+        <input
+          type="text"
+          value={newTodoType}
           onChange={(e) => setNewTodoType(e.target.value)}
           className="edit-input"
         />
 
         {/* ✅ 시작일 입력 필드 */}
-        <input 
-          type="text" 
+        <input
+          type="text"
           value={formatDate(newCreateDateTime)}
           onFocus={(e) => (e.target.type = "date")}
           onBlur={(e) => (e.target.type = "text")}
@@ -87,8 +94,8 @@ const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
         />
 
         {/* ✅ 마감일 입력 필드 */}
-        <input 
-          type="text" 
+        <input
+          type="text"
           value={formatDate(newDueDate)}
           onFocus={(e) => (e.target.type = "date")}
           onBlur={(e) => (e.target.type = "text")}
@@ -98,19 +105,15 @@ const TodoItem = ({ todo, onToggle, onRemove, onUpdate }) => {
         />
       </div>
 
-      <div className='item btnUpDel'>
+      <div className="item btnUpDel">
         {/* 수정 버튼 */}
-        <Button 
-          icon={<FormOutlined />} 
-          onClick={handleUpdate}
-          size="small"
-        >
+        <Button icon={<FormOutlined />} onClick={handleUpdate} size="small">
           수정
         </Button>
 
         {/* 삭제 버튼 */}
-        <Button 
-          icon={<DeleteOutlined />} 
+        <Button
+          icon={<DeleteOutlined />}
           onClick={() => onRemove(todoId)}
           size="small"
         >

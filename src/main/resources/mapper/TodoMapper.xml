@@ -8,7 +8,6 @@
              todoId         -- 할 일 ID
             ,todoTitle      -- 할 일 제목
             ,todoType       -- 할 일 유형
-            ,text           -- 상세 내용
             ,status         -- 진행 상태
             ,createDateTime -- 생성 날짜
             ,dueDate        -- 마감 기한
@@ -21,14 +20,12 @@
         INSERT INTO todos (
              todoTitle
             ,todoType
-            ,text
             ,status
             ,createDateTime
             ,dueDate
         ) VALUES (
              #{todoTitle}
             ,#{todoType}
-            ,#{text}
             ,#{status}
             ,#{createDateTime} 
             ,#{dueDate}
@@ -52,7 +49,6 @@
         SET
             todoTitle = #{todoTitle},
             todoType = #{todoType},
-            text = #{text},
             status = #{status},
             dueDate = #{dueDate}
         WHERE todoId = #{todoId}

@@ -1,6 +1,5 @@
 import React from 'react'
 import TodoItem from './TodoItem'
-import CalendarComponent from './CalendarComponent'
 
 const TodoList = ( {todoList, onToggle, onRemove, onUpdate}) => {
   return (

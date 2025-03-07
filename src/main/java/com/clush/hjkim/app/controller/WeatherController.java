@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.clush.hjkim.app.vo.WeatherResponse;
 import com.clush.hjkim.service.WeatherService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
+@Tag(name = "날씨 조회", description = "날씨 조회하는 api 입니다.")
 @RequestMapping("/api/weather")
 @CrossOrigin("*")
 public class WeatherController {

@@ -1,11 +1,8 @@
 -- 할 일 샘플 데이터 삽입
-INSERT INTO todos (todoTitle, todoType, text, status, createDateTime, dueDate)
+INSERT INTO todos (todoTitle, todoType, status, createDateTime, dueDate)
 VALUES 
-  ('테스트타이틀1', '공부', '테스트텍스트', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  ('테스트타이틀2', '공부', '테스트텍스트', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  ('테스트타이틀3', '공부', '테스트텍스트', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  ('테스트타이틀4', '공부', '테스트텍스트', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  ('테스트타이틀5', '공부', '테스트텍스트', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  ('테스트타이틀6', '공부', '테스트텍스트', false, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-  ('테스트타이틀7', '공부', '테스트텍스트', true, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+('정보처리기사 필기', '시험', 1, '2025-03-02 10:48:10', '2025-03-02 09:00:00'),
+('캘린더 앱을 개발', '개발', 1, '2025-03-03 10:48:10', '2025-03-07 09:00:00'),
+('치과 예약', '기타', 0, '2025-03-24 10:48:10', '2025-03-24 09:00:00'),
+('리액트 강의 수강', '공부', 0, '2025-03-04 10:48:10', '2025-03-05 09:00:00');
 
