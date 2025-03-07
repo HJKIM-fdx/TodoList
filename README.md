@@ -7,8 +7,8 @@
 
 할 일 CRUD 기능과 더불어 추가적인 기능으로,
 
-1. 현재 날씨 조회 기능 (백앤드)
-2. 마감일 지난 경우, 브라우저 알림 기능 (프론트앤드)
+1. 현재 날씨 조회 기능 (백엔드)
+2. 마감일 지난 경우, 브라우저 알림 기능 (프론트엔드)
    
 을 구현하였습니다.
 
@@ -61,9 +61,9 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 
 
-# 백앤드
+# 백엔드
 
-## 3. 백앤드 실행
+## 3. 백엔드 실행
 1. 깃허브에서 프로젝트 파일 다운로드
 ```
 git clone https://github.com/HJKIM-fdx/TodoList.git
@@ -88,7 +88,7 @@ http://localhost:8081/api/healthcheck
 
 
 
-## 4. 백앤드 API 테스트 케이스
+## 4. 백엔드 API 테스트 케이스
 [API 백앤드 테스트시나리오.xlsx](https://github.com/user-attachments/files/19121271/API.xlsx)
 
 
@@ -98,7 +98,7 @@ http://localhost:8081/api/healthcheck
 
 
 
-## 5. 백앤드 API 명세
+## 5. 백엔드 API 명세
 Swagger URL : http://localhost:8081/swagger-ui/index.html#/
 
 ### 5-1. HealthCheck API
@@ -144,15 +144,15 @@ Swagger URL : http://localhost:8081/swagger-ui/index.html#/
 | GET         | /api/weather   | 특정 도시의 날씨를 조회 |
 ****
 
-# 프론트앤드
+# 프론트엔드
 
-## 6. 프론트앤드 실행
+## 6. 프론트엔드 실행
 1. 패키지 설치
 ```
 npm install
 ```
 
-2. 프론트 앤드 경로 이동
+2. 프론트 엔드 경로 이동
 ```
 cd {프로젝트 경로}/app/src/main/todo-app
 ```
@@ -165,19 +165,19 @@ npm run dev
 4. 서버 url을 Ctrl+클릭 으로 브라우저 띄우기
 
 
-## 6-2. 프론트앤드 테스트 케이스
+## 6-2. 프론트엔드 테스트 케이스
 [프론트앤드 테스트시나리오_todoList.xlsx](https://github.com/user-attachments/files/19121268/_todoList.xlsx)
 
 
 
 ---
 ## 7. 주요 라이브러리
-### 프론트앤드
+### 프론트엔드
 - react: UI를 구성하기 위한 JavaScript 라이브러리
 - antd: UI 컴포넌트(버튼, 카드, 캘린더 등)를 제공하는 디자인 라이브러리
 - dayjs: 날짜 및 시간 처리를 위한 경량 라이브러리
 
-### 백앤드
+### 백엔드
 - MyBatis 3.0.3 : SQL 쿼리를 xml로 작성하여 DB와 연결하기 위한 라이브러리
 - H2 Database : MYSql 사용 전, 메모리 환경으로 개발 환경에서 임시 데이터베이스로 사용
 - Lombok : @Getter, @Setter 사용
@@ -186,10 +186,10 @@ npm run dev
 
 
 ## 8. 프로젝트 구조
-### 백앤드
+### 백엔드
 ![image](https://github.com/user-attachments/assets/6eda0afe-dea9-46ab-af13-9ee11d494c74)
 
-### 프론트앤드
+### 프론트엔드
 ![image](https://github.com/user-attachments/assets/09ce6ccd-6e36-4a9a-9ecd-14f2b57b3ed5)
 
 📦 TodoContainer  // 최상위 컨테이너
