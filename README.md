@@ -56,4 +56,7 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 ### 5. 백앤드 실행
 1. 깃허브에서 프로젝트 파일 다운로드
-   
+```
+git clone https://github.com/HJKIM-fdx/TodoList.git
+cd 
+```
