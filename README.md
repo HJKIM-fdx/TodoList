@@ -1,4 +1,6 @@
 # 할 일 관리 앱  (날씨 체크 & 알림 리마인드)
+![image](https://github.com/user-attachments/assets/ecc6e483-6536-4c80-98a2-b795990f434d)
+
 
 ## 1. 프로젝트 소개
 캘린더와 To-do List를 이용하여 할 일 관리를 할 수 있는 웹 어플리케이션입니다. 
