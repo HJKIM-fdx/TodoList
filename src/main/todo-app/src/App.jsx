@@ -11,7 +11,7 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="title">
-        <h1>일정 관리 캘린더</h1>
+        <h1>Calendar</h1>
           <Weather/>
       </div>
       <div className="content-container">

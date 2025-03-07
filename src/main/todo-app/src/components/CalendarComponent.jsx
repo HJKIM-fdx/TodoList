@@ -3,8 +3,6 @@ import { Calendar, Badge } from "antd";
 import dayjs from "dayjs";
 
 const CalendarComponent = ({ setSelectedDate, todoList = [] }) => {
-  // console.log("@@@ todoList 확인:", todoList); // 디버깅용 로그
-
   // 날짜 선택 시 호출되는 함수
   const handleDateSelect = (date) => {
     if (date) {
@@ -26,19 +24,25 @@ const CalendarComponent = ({ setSelectedDate, todoList = [] }) => {
         dayjs(todo.createDateTime).format("YYYY-MM-DD") === formattedDate
     );
 
-    // console.log(`📆 ${formattedDate}:`, dailyTodos); // ✅ 디버깅용
-    dailyTodos.forEach((todo) =>
-      console.log(`✅ ${todo.todoId}: ${todo.todoTitle}`)
-    );
-
     return (
       <div>
         {dailyTodos.map((todo) => (
           <Badge
             key={todo.todoId}
-            status="processing"
-            text={todo.todoTitle}
-            style={{ display: "block", marginTop: 4, fontSize: "14px" }}
+            status={todo.status ? "processing" : todo.dueDate && dayjs(todo.dueDate).isBefore(dayjs(), "day") ? "error" : "processing"}
+            text={
+              <span
+                style={{
+                  display: "block",
+                  marginTop: 4,
+                  fontSize: "14px",
+                  textDecoration: todo.status ? "line-through" : "none",
+                  color: todo.status ? "gray" : "inherit",
+                }}
+              >
+                {todo.todoTitle}
+              </span>
+            }
           />
         ))}
       </div>

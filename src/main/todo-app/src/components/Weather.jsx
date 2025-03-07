@@ -30,11 +30,11 @@ function Weather({ city = "Seoul" }) {
       {weatherData ? (
         <div
           style={{
-            background: "#f7f7f7",
-            padding: "10px",
-            borderRadius: "8px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            maxWidth: "400px",
+            background: "rgba(224, 241, 241, 0.8)",
+            padding: "0px",
+            borderRadius: "30px",
+            boxShadow: "0 4px 8px rgba(5, 5, 5, 0.1)",
+            maxWidth: "200px",
             margin: "0 auto",
           }}
         >
