@@ -58,5 +58,24 @@ spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 1. 깃허브에서 프로젝트 파일 다운로드
 ```
 git clone https://github.com/HJKIM-fdx/TodoList.git
-cd 
+cd TodoList/app
 ```
+
+2. Gradle 빌드
+```./gradle clean build```
+
+3. jar 실행
+```
+cd .\build\libs\
+java -jar .\app-0.0.1-SNAPSHOT.jar
+```
+
+4. 브라우저로 헬스체크 api 실행
+```
+http://localhost:8081/api/healthcheck
+```
+
+### 5-1. 백앤드 API 테스트 케이스
+[API 백앤드 테스트시나리오.xlsx](https://github.com/user-attachments/files/19120099/API.xlsx)
+
+
