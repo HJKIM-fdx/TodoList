@@ -1,7 +1,9 @@
 # 할 일 관리 앱  (날씨 체크 & 알림 리마인드)
 
 ## 1. 프로젝트 소개
-캘린더와 To-do List를 이용하여 할 일 관리를 할 수 있는 웹 어플리케이션입니다. 할 일 CRUD 기능과 더불어 추가적인 기능으로,
+캘린더와 To-do List를 이용하여 할 일 관리를 할 수 있는 웹 어플리케이션입니다. 
+
+할 일 CRUD 기능과 더불어 추가적인 기능으로,
 
 1. 현재 날씨 조회 기능 
 2. 마감일 지난 경우, 브라우저 알림 기능
@@ -11,7 +13,7 @@
 
 ## 2. 소스 실행 사전 준비 작업
 
-### 1. 사전 설치 작업
+### 2-1. 사전 설치 작업
 아래와 같은 프로그램이 설치되어야 합니다.
 1. Java 17
 2. Node.js
@@ -21,7 +23,7 @@
 6. Debeaver (MYSql 데이터베이스 확인용, 필요 시 설치)
 7. DB생성 : (DataBase 명 : Clush / 테이블 명 : todos / 포트 : 3306) 으로 생성했습니다.
 
-### 2. Debeaver에 MYSql DDL Script 실행
+### 2-2. Debeaver에 MYSql DDL Script 실행
 ```sql
 use Clush;
 DROP TABLE IF EXISTS todos;
@@ -35,7 +37,8 @@ CREATE TABLE todos (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 ```
 
-### 3. Debeaver에 MYSql 기초 데이터 DML Script 실행 (필요 시)
+
+### 2-3. Debeaver에 MYSql 기초 데이터 DML Script 실행 (필요 시)
 
 ```sql
 INSERT INTO todos (todoTitle, todoType, status, createDateTime, dueDate)
@@ -46,7 +49,7 @@ VALUES
 ('리액트 강의 수강', '공부', 0, '2025-03-04 10:48:10', '2025-03-05 09:00:00');
 ```
 
-### 4. DB 정보 추가 (application-local.db.properties)
+### 2-4. DB 정보 추가 (application-local.db.properties)
 ```
 spring.datasource.url=jdbc:mysql://localhost:3306/Clush
 spring.datasource.username=root
@@ -54,15 +57,21 @@ spring.datasource.password=root
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 ```
 
-### 5. 백앤드 실행
+
+
+# 백앤드
+
+## 3. 백앤드 실행
 1. 깃허브에서 프로젝트 파일 다운로드
 ```
 git clone https://github.com/HJKIM-fdx/TodoList.git
-cd TodoList/app
+cd {프로젝트 경로}/app/src/main/java/com/clush/hjkim/app
 ```
 
 2. Gradle 빌드
-```./gradle clean build```
+```
+./gradle clean build
+```
 
 3. jar 실행
 ```
@@ -75,7 +84,112 @@ java -jar .\app-0.0.1-SNAPSHOT.jar
 http://localhost:8081/api/healthcheck
 ```
 
-### 5-1. 백앤드 API 테스트 케이스
+
+
+## 4. 백앤드 API 테스트 케이스
 [API 백앤드 테스트시나리오.xlsx](https://github.com/user-attachments/files/19120099/API.xlsx)
+
+테스트 케이스는 Visual Studio Code의 Rest Client을 사용하여 http 요청을 통해 진행하였습니다.
+
+프로젝트 내의 api.http 로 직접 요청보낼 수 있습니다. (파일 위치 : app/api.http)
+
+
+
+## 5. 백앤드 API 명세
+Swagger URL : http://localhost:8081/swagger-ui/index.html#/
+
+### 5-1. HealthCheck API
+
+| HTTP Method | Endpoint      | 설명          |
+|-------------|---------------|---------------|
+| GET         | /healthcheck  | 서비스 상태 확인 |
+
+---
+
+### 5-2. Todo 관리 API
+
+### 5-2.1 Todo 목록 조회
+
+| HTTP Method | Endpoint | 설명                |
+|-------------|----------|---------------------|
+| GET         | /api/todo | 등록된 모든 Todo 목록을 조회 |
+
+### 5-2.2 Todo 추가
+
+| HTTP Method | Endpoint | 설명                  |
+|-------------|----------|-----------------------|
+| POST        | /api/todo | 새로운 Todo 항목을 추가 |
+
+### 5-2.3 Todo 삭제
+
+| HTTP Method | Endpoint                | 설명                                            |
+|-------------|-------------------------|-------------------------------------------------|
+| DELETE      | /api/todo/delete/{todoId} | 특정 Todo 항목을 삭제. <br> -1을 입력하면 전체 삭제됩니다. |
+
+### 5-2.4 Todo 수정
+
+| HTTP Method | Endpoint | 설명                                                 |
+|-------------|----------|------------------------------------------------------|
+| PUT         | /api/todo | 특정 Todo 항목을 수정. <br> -1을 입력하면 모든 Todo 항목을 완료 처리합니다. |
+
+---
+
+### 5-3. 날씨 조회 API
+
+| HTTP Method | Endpoint       | 설명              |
+|-------------|----------------|-------------------|
+| GET         | /api/weather   | 특정 도시의 날씨를 조회 |
+****
+
+# 프론트앤드
+
+## 6. 프론트앤드 실행
+1. 패키지 설치
+```
+npm install
+```
+
+2. 프론트 앤드 경로 이동
+```
+cd {프로젝트 경로}/app/src/main/todo-app
+```
+
+3. 서버 실행
+```
+npm run dev
+```
+
+4. 서버 url을 Ctrl+클릭 으로 브라우저 띄우기
+
+
+## 6-2. 프론트앤드 테스트 케이스
+[프론트앤드 테스트시나리오_todoList.xlsx](https://github.com/user-attachments/files/19120270/_todoList.xlsx)
+
+
+---
+## 7. 주요 라이브러리
+### 프론트앤드
+- react: UI를 구성하기 위한 JavaScript 라이브러리
+- antd: UI 컴포넌트(버튼, 카드, 캘린더 등)를 제공하는 디자인 라이브러리
+- dayjs: 날짜 및 시간 처리를 위한 경량 라이브러리
+
+### 백앤드
+- MyBatis 3.0.3 : SQL 쿼리를 xml로 작성하여 DB와 연결하기 위한 라이브러리
+- H2 Database : MYSql 사용 전, 메모리 환경으로 개발 환경에서 임시 데이터베이스로 사용
+- Lombok : @Getter, @Setter 사용
+- MySQL Connector : MySQL DB 연결을 위해 사용
+- springdoc-openapi-starter-webmvc-ui : Spring Boot에서 Swagger UI를 사용하여 API 문서를 자동 생성하고, 웹 브라우저에서 쉽게 확인할 수 있도록 도와주는 라이브러리
+
+
+## 8. 프로젝트 구조
+### 백앤드
+![image](https://github.com/user-attachments/assets/6eda0afe-dea9-46ab-af13-9ee11d494c74)
+
+### 프론트앤드
+![image](https://github.com/user-attachments/assets/e4b3e49f-d832-4b8b-a928-1594a4ecb6f8)
+![image](https://github.com/user-attachments/assets/09ce6ccd-6e36-4a9a-9ecd-14f2b57b3ed5)
+
+
+
 
 
