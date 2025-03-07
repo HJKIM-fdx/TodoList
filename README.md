@@ -1,4 +1,4 @@
-# 할 일 관리 앱  (현재날씨 조회& 마감된 할 일 알림 리마인드)
+# 할 일 관리 앱  (현재날씨 조회 & 마감된 할 일 알림 리마인드)
 ![image](https://github.com/user-attachments/assets/ecc6e483-6536-4c80-98a2-b795990f434d)
 
 
