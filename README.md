@@ -87,7 +87,8 @@ http://localhost:8081/api/healthcheck
 
 
 ## 4. 백앤드 API 테스트 케이스
-[API 백앤드 테스트시나리오.xlsx](https://github.com/user-attachments/files/19120099/API.xlsx)
+[API 백앤드 테스트시나리오.xlsx](https://github.com/user-attachments/files/19121271/API.xlsx)
+
 
 테스트 케이스는 Visual Studio Code의 Rest Client을 사용하여 http 요청을 통해 진행하였습니다.
 
@@ -163,7 +164,8 @@ npm run dev
 
 
 ## 6-2. 프론트앤드 테스트 케이스
-[프론트앤드 테스트시나리오_todoList.xlsx](https://github.com/user-attachments/files/19120270/_todoList.xlsx)
+[프론트앤드 테스트시나리오_todoList.xlsx](https://github.com/user-attachments/files/19121268/_todoList.xlsx)
+
 
 
 ---
@@ -186,8 +188,24 @@ npm run dev
 ![image](https://github.com/user-attachments/assets/6eda0afe-dea9-46ab-af13-9ee11d494c74)
 
 ### 프론트앤드
-![image](https://github.com/user-attachments/assets/e4b3e49f-d832-4b8b-a928-1594a4ecb6f8)
 ![image](https://github.com/user-attachments/assets/09ce6ccd-6e36-4a9a-9ecd-14f2b57b3ed5)
+
+📦 TodoContainer  // 최상위 컨테이너
+
+ ├── 📄 TodoHeader  // 헤더 (앱 제목, 설명)
+
+ ├── 📄 TodoInput  // 새로운 할 일 입력 필드
+
+ ├── 📂 TodoList  // 할 일 목록을 감싸는 컨테이너
+
+ │    ├── 📄 TodoItem  // 개별 할 일 항목 (체크박스, 삭제 버튼 포함 가능)
+
+ │    ├── 📄 TodoItem  
+
+ │    ├── 📄 TodoItem  
+
+ ├── 📄 TodoFooter  // 전체 개수 및 필터 기능
+
 
 
 
