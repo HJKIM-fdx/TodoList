@@ -194,7 +194,7 @@ npm run dev
 
 📦 TodoContainer  // 최상위 컨테이너
 
- ├── 📄 TodoHeader  // 헤더 (앱 제목, 설명)
+ ├── 📄 TodoHeader  // 헤더
 
  ├── 📄 TodoInput  // 새로운 할 일 입력 필드
 
@@ -206,7 +206,7 @@ npm run dev
 
  │    ├── 📄 TodoItem  
 
- ├── 📄 TodoFooter  // 전체 개수 및 필터 기능
+ ├── 📄 TodoFooter  // 전체 삭제, 전체 완료 기능
 
 
 
