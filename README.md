@@ -58,11 +58,13 @@
 ## 2. 프로젝트 구조
 
 ### 백엔드
-![image](https://github.com/user-attachments/assets/6eda0afe-dea9-46ab-af13-9ee11d494c74)
+![image](https://github.com/user-attachments/assets/247b47a6-5f6b-4acc-b069-32d3897d86ac)
+
 
 
 ### 프론트엔드
-![image](https://github.com/user-attachments/assets/09ce6ccd-6e36-4a9a-9ecd-14f2b57b3ed5)
+![image](https://github.com/user-attachments/assets/937c73ad-a01d-4f26-a581-8bd2d268088b)
+
 
 
 
